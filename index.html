@@ -10,21 +10,20 @@
 </head>
 
 <body>
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+
 
     <div id="app">
 
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
 
-                <div class="item">
-                    <img src="img/01.webp" alt="Spiderman" />
-                    <div class="text">
-                        <h3>Spiderman</h3>
+                <div v-for="(currentSlide , index) in slides" class="item">
+                    <img :src="currentSlide.image" :alt="currentSlide.title " />
+                    <div  class="text">
+                        <h3> {{ currentSlide.title }} </h3>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit
-                            tempore aliquid deleniti aut
-                            veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum
-                            corporis.
+                            {{ currentSlide.text }}
                         </p>
                     </div>
                 </div>
@@ -54,7 +53,6 @@
 
     </div>
 
-    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
     <script src="./js/script.js"></script>
 </body>
 
