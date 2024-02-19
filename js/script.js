@@ -31,7 +31,7 @@ createApp({
 
         return {
 
-            activeSlide : 0,
+            activeSlideIndex : 0,
 
             slides : [
                 {
@@ -64,7 +64,25 @@ createApp({
         
     },
     methods : {
-        
+
+        nextSlide() {
+
+            this.activeSlideIndex++;
+            if (this.activeSlideIndex >= this.slides.length){
+                this.activeSlideIndex = 0;
+            }
+        },
+
+        prevSlide(){
+
+            this.activeSlideIndex--;
+            if (this.activeSlideIndex < 0){
+                this.activeSlideIndex = this.slides.length - 1;
+            }
+
+        }
+
+
 
 
 
