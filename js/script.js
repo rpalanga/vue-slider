@@ -4,11 +4,12 @@ Partendo dal markup della versione svolta in js plain, rifare lo slider ma quest
 
 Bonus:
 
- -1 al click su una thumb, visualizzare in grande l'immagine corrispondente
+ -1 al click su una thumb, visualizzare in grande l'immagine corrispondente V
 
- -2 applicare l'autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente
+ -2 applicare l'autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente 
 
  -3 quando il cursore va in hover sullo slider, bloccare l'autoplay e farlo riprendere quando esce
+
 Consigli del giorno:
 
 - regola d'oro: riciclare ovunque possibile!
@@ -31,6 +32,8 @@ createApp({
     data() {
 
         return {
+
+            
 
             activeSlideIndex : 0,
 
@@ -81,12 +84,35 @@ createApp({
                 this.activeSlideIndex = this.slides.length - 1;
             }
 
+        },
+
+        changeSlide(index){
+
+            this.activeSlideIndex = index;
+
+        },
+
+        startInterval (){
+            this.nowTimer = setInterval (() =>  {
+
+                this.nextSlide()
+            },
+
+            3000);  
+        },
+
+        stopInterval(){
+
+            clearInterval(this.nowTimer);
+
+
         }
 
 
-
-
-
+    },
+    mounted(){
+        this.startInterval();
     }
+
 
 }).mount(`#app`);

@@ -16,7 +16,7 @@
     <div id="app">
 
         <div class="container">
-            <div class="slider-wrapper" tabindex="0">
+            <div class="slider-wrapper" tabindex="0" @mouseover="stopInterval" @mouseleave="startInterval" >
 
                 <div v-for="(currentSlide , index) in slides" class="item"  v-show="index == activeSlideIndex">
                     <img :src="currentSlide.image" :alt="currentSlide.title " />
@@ -32,7 +32,7 @@
                     <div @click="prevSlide()" class="prev"></div>
                     <div @click="nextSlide()" class="next"></div>
 
-                    <div v-for="(currentSlide , index) in slides"  class="thumb active" @click="changeSlide(index)">
+                    <div v-for="(currentSlide , index) in slides"  class="thumb" :class="index === activeSlideIndex ? `active` : `` " @click="changeSlide(index)">
                         <img :src="currentSlide.image" :alt="currentSlide.title " />
                     </div>
                    
